@@ -54,6 +54,9 @@ typings/
 # dotenv environment variable files
 .env*
 
+# We will allow the example dotenv environment variable file to be checked in
+!.env.example
+
 # gatsby files
 .cache/
 public
