@@ -41,7 +41,7 @@ class Calendar extends React.Component {
           response => {
             // TODO(teddywilson) timezone parsing and sorting by date
             let events = response.result.items.filter(event => {
-              event.status != "cancelled"
+              return event.status !== "cancelled"
             })
             that.setState(
               {
