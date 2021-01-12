@@ -6,8 +6,11 @@ import Player from "../components/player"
 export default function Home() {
   return (
     <div>
-      <div>Entropy FM</div>
+      <h1>Entropy FM</h1>
+      <h3>-----------</h3>
+      <h3>Player</h3>
       <Player />
+      <h3>-----------</h3>
       <Calendar />
     </div>
   )
