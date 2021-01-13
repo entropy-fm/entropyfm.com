@@ -40,6 +40,13 @@ class Calendar extends React.Component {
         .then(() =>
           gapi.client.request({
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
+            params: {
+              // TODO(teddywilson) fix
+              timeMax: "2040-06-03T10:00:00-07:00",
+              maxResults: 2000,
+              singleEvents: true,
+              orderBy: "startTime",
+            },
           })
         )
         .then(
