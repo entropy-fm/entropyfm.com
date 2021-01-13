@@ -43,7 +43,7 @@ class Calendar extends React.Component {
             params: {
               // TODO(teddywilson)
               timeMax: "2040-06-03T10:00:00-07:00",
-              maxResults: 2000,
+              maxResults: 200,
               singleEvents: true,
               orderBy: "startTime",
             },
