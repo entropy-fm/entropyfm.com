@@ -1,6 +1,8 @@
 import React from "react"
 
 import { gapi } from "gapi-script"
+import moment from "moment"
+import "moment-timezone"
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class Calendar extends React.Component {
         <div>Calendar: {this.state.events.length}</div>
         {this.state.events.map(event => (
           <li key={event.id}>
-            ({event.startDate}) {event.summary}
+            ({event.startDateFormatted}) {event.summary}
           </li>
         ))}
       </div>
@@ -50,29 +52,26 @@ class Calendar extends React.Component {
                 )
               })
               .map(event => {
-                // TODO(teddywilson) this is totally wrong and is WIP
-                let startDate = new Date(event.start.dateTime).toLocaleString(
-                  "en-US",
-                  {
-                    timeZone: event.start.timeZone,
-                  }
-                )
-                console.log(startDate)
+                // TODO(teddywilson) parse end time as well
+                let startDate = moment
+                  .tz(event.start.dateTime, event.start.timeZone)
+                  .local()
                 return {
                   id: event.id,
                   summary: event.summary,
-                  startDate: startDate,
+                  startDateFormatted: startDate.format("MM/DD/YYYY h:mm:ss"),
+                  startDateUnix: startDate.unix(),
                 }
               })
               .sort((a, b) => {
-                return b.startDate - a.startDate
+                return b.startDateUnix - a.startDateUnix
               })
             that.setState(
               {
                 events,
               },
               () => {
-                //console.log(that.state.events)
+                console.log(that.state.events)
               }
             )
           },

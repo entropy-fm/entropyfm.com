@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <Layout>
       <Header />
-      <h3>-----------</h3>
+      {/* <h3>-----------</h3>
       <h3>Player</h3>
       <Player />
-      <h3>-----------</h3>
+      <h3>-----------</h3> */}
       <Calendar />
     </Layout>
   )
