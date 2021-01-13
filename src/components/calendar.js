@@ -22,7 +22,7 @@ class Calendar extends React.Component {
         <div>Calendar: {this.state.events.length}</div>
         {this.state.events.map(event => (
           <li key={event.id}>
-            ({event.startDateFormatted}) {event.summary}
+            ({event.dateFormatted}) {event.summary}
           </li>
         ))}
       </div>
@@ -39,7 +39,7 @@ class Calendar extends React.Component {
         })
         .then(() =>
           gapi.client.request({
-            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events&singleEvents=False`,
+            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
           })
         )
         .then(
@@ -52,16 +52,23 @@ class Calendar extends React.Component {
                 )
               })
               .map(event => {
-                // TODO(teddywilson) parse end time as well
                 // TODO(teddywilson) fetch recurring events
                 let startDate = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
+                let endDate = moment
+                  .tz(event.end.dateTime, event.end.timeZone)
+                  .local()
+                let dateFormatted = startDate
+                  .format("MM/DD h:mm")
+                  .concat(" - ")
+                  .concat(endDate.format("h:mm"))
                 return {
                   id: event.id,
                   summary: event.summary,
-                  startDateFormatted: startDate.format("MM/DD/YYYY h:mm:ss"),
                   startDateUnix: startDate.unix(),
+                  endDateUnix: endDate.unix(),
+                  dateFormatted: dateFormatted,
                 }
               })
               .sort((a, b) => {
