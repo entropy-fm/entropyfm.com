@@ -39,7 +39,7 @@ class Calendar extends React.Component {
         })
         .then(() =>
           gapi.client.request({
-            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
+            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events&singleEvents=False`,
           })
         )
         .then(
@@ -53,6 +53,7 @@ class Calendar extends React.Component {
               })
               .map(event => {
                 // TODO(teddywilson) parse end time as well
+                // TODO(teddywilson) fetch recurring events
                 let startDate = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
