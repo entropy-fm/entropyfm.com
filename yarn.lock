@@ -5191,7 +5191,7 @@ gatsby-telemetry@^1.8.1:
     node-fetch "^2.6.1"
     uuid "3.4.0"
 
-gatsby@^2.26.1:
+gatsby@^2.30.2:
   version "2.30.2"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.30.2.tgz#e3dba172457aadd4d02e2510bea3dca1e7e673de"
   integrity sha512-ioJnAFTyq2BoNL6BECXx6ZWyLY3yu7ZrmT2T4PSFhef8MQeeflL4lbdom3tv3J4R4YQO0bY4vV5yGlxgQtQfBw==

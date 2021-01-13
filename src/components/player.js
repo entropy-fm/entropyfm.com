@@ -11,7 +11,7 @@ class Player extends React.Component {
     return (
       <div onClick={this.toggleState}>
         <img
-          src={this.state.isPlaying ? "/pause.png" : "/play.png"}
+          src={this.state.isPlaying ? "pause.png" : "play.png"}
           style={{
             width: 50,
             height: 50,
