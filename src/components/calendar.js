@@ -19,7 +19,7 @@ class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <div>Calendar: {this.state.events.length}</div>
+        <div>Upcoming:</div>
         {this.state.events.map(event => (
           <li key={event.id}>
             ({event.dateFormatted}) {event.summary}
@@ -41,9 +41,9 @@ class Calendar extends React.Component {
           gapi.client.request({
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
             params: {
-              // TODO(teddywilson)
+              timeMin: moment().toISOString(),
               timeMax: "2040-06-03T10:00:00-07:00",
-              maxResults: 200,
+              maxResults: 20,
               singleEvents: true,
               orderBy: "startTime",
             },
@@ -59,7 +59,6 @@ class Calendar extends React.Component {
                 )
               })
               .map(event => {
-                // TODO(teddywilson) fetch recurring events
                 let startDate = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
@@ -77,9 +76,6 @@ class Calendar extends React.Component {
                   endDateUnix: endDate.unix(),
                   dateFormatted: dateFormatted,
                 }
-              })
-              .sort((a, b) => {
-                return b.startDateUnix - a.startDateUnix
               })
             that.setState(
               {
