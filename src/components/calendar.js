@@ -19,12 +19,15 @@ class Calendar extends React.Component {
       <div>
         <div>Calendar: {this.state.events.length}</div>
         {this.state.events.map(event => (
-          <li key={event.id}>{event.summary}</li>
+          <li key={event.id}>
+            ({event.startDate}) {event.summary}
+          </li>
         ))}
       </div>
     )
   }
 
+  // TODO(teddywilson) once finalized should be broken up, moved to another file, etc.
   getEvents = () => {
     let that = this
     function start() {
@@ -39,16 +42,37 @@ class Calendar extends React.Component {
         )
         .then(
           response => {
-            // TODO(teddywilson) timezone parsing and sorting by date
-            let events = response.result.items.filter(event => {
-              return event.status !== "cancelled"
-            })
+            let events = response.result.items
+              .filter(event => {
+                return (
+                  event.status !== "cancelled" &&
+                  event.start.dateTime !== undefined
+                )
+              })
+              .map(event => {
+                // TODO(teddywilson) this is totally wrong and is WIP
+                let startDate = new Date(event.start.dateTime).toLocaleString(
+                  "en-US",
+                  {
+                    timeZone: event.start.timeZone,
+                  }
+                )
+                console.log(startDate)
+                return {
+                  id: event.id,
+                  summary: event.summary,
+                  startDate: startDate,
+                }
+              })
+              .sort((a, b) => {
+                return b.startDate - a.startDate
+              })
             that.setState(
               {
                 events,
               },
               () => {
-                console.log(that.state.events)
+                //console.log(that.state.events)
               }
             )
           },
