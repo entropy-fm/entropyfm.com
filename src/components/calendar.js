@@ -19,9 +19,13 @@ class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <div>Upcoming:</div>
         {this.state.events.map(event => (
-          <li key={event.id}>
+          <li
+            key={event.id}
+            style={{
+              fontSize: 16,
+            }}
+          >
             ({event.dateFormatted}) {event.summary}
           </li>
         ))}
@@ -42,7 +46,7 @@ class Calendar extends React.Component {
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
             params: {
               timeMin: moment().toISOString(),
-              timeMax: "2040-06-03T10:00:00-07:00",
+              timeMax: moment().add(3, "M").toISOString(),
               maxResults: 20,
               singleEvents: true,
               orderBy: "startTime",
@@ -66,9 +70,9 @@ class Calendar extends React.Component {
                   .tz(event.end.dateTime, event.end.timeZone)
                   .local()
                 let dateFormatted = startDate
-                  .format("MM/DD h:mm")
+                  .format("MM/DD HH:mm")
                   .concat(" - ")
-                  .concat(endDate.format("h:mm"))
+                  .concat(endDate.format("HH:mm"))
                 return {
                   id: event.id,
                   summary: event.summary,

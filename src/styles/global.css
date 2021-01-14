@@ -7,7 +7,7 @@
 }
 
 html {
-    background-color: black;
+    background-color: #000000;
     color: white;
 }
 
@@ -15,3 +15,9 @@ html,
 body {
     height: 100%;
 }
+
+.footer{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }

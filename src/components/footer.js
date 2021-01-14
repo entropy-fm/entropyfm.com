@@ -2,7 +2,22 @@ import React from "react"
 
 class Footer extends React.Component {
   render = () => {
-    return <div></div>
+    return (
+      <div
+        className="footer"
+        style={{
+          position: "fixed",
+          backgroundColor: "#000000",
+          borderTopStyle: "dashed",
+          borderTopColor: "#ffffff",
+          borderTopWidth: 8,
+          padding: 32,
+        }}
+      >
+        <h2>Wanna be on air?</h2>
+        <h4>Leave us a message at +1 469 708 9203</h4>
+      </div>
+    )
   }
 }
 
