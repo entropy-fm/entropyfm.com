@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <div>
         <img
-          src="header.png"
+          src="header-2.png"
           style={{
             width: "50%",
           }}
