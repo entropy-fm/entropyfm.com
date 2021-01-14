@@ -9,12 +9,15 @@ class Player extends React.Component {
   }
   render = () => {
     return (
-      <div onClick={this.toggleState}>
+      <div>
         <img
+          className="button"
           src={this.state.isPlaying ? "pause.png" : "play.png"}
+          onClick={this.toggleState}
+          // TODO(teddywilson) this should be generic
           style={{
-            width: 50,
-            height: 50,
+            width: 96,
+            height: 96,
           }}
         />
       </div>

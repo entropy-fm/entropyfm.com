@@ -4,13 +4,8 @@ import React from "react"
 class Header extends React.Component {
   render = () => {
     return (
-      <div>
-        <img
-          src="header-2.png"
-          style={{
-            width: "50%",
-          }}
-        />
+      <div className="header">
+        <img src="header-2.png" />
       </div>
     )
   }

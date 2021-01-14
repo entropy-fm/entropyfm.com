@@ -20,21 +20,8 @@ class Calendar extends React.Component {
     return (
       <div>
         {this.state.events.map(event => (
-          <li
-            key={event.id}
-            style={{
-              fontSize: 16,
-            }}
-          >
-            <span
-              style={{
-                color: "red",
-                fontFamily: "VT323",
-                letterSpacing: 4,
-              }}
-            >
-              {event.dateFormatted}
-            </span>{" "}
+          <li key={event.id} className="calendarItem">
+            <span className="calendarItemSpanDate">{event.dateFormatted}</span>{" "}
             {event.summary}
           </li>
         ))}
@@ -56,7 +43,7 @@ class Calendar extends React.Component {
             params: {
               timeMin: moment().toISOString(),
               timeMax: moment().add(3, "M").toISOString(),
-              maxResults: 20,
+              maxResults: 24,
               singleEvents: true,
               orderBy: "startTime",
             },

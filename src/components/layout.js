@@ -5,12 +5,7 @@ import Header from "./header"
 
 const Layout = ({ children }) => {
   return (
-    <div
-      style={{
-        marginLeft: 32,
-        marginTop: 32,
-      }}
-    >
+    <div className="layout">
       <Header />
       <main>{children}</main>
       <Footer />
