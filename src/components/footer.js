@@ -12,6 +12,9 @@ class Footer extends React.Component {
           borderTopColor: "#ffffff",
           borderTopWidth: 8,
           padding: 32,
+          bottom: 0,
+          left: 0,
+          width: "100%",
         }}
       >
         <h2>Wanna be on air?</h2>
