@@ -26,7 +26,16 @@ class Calendar extends React.Component {
               fontSize: 16,
             }}
           >
-            ({event.dateFormatted}) {event.summary}
+            <span
+              style={{
+                color: "red",
+                fontFamily: "VT323",
+                letterSpacing: 4,
+              }}
+            >
+              {event.dateFormatted}
+            </span>{" "}
+            {event.summary}
           </li>
         ))}
       </div>
@@ -66,18 +75,10 @@ class Calendar extends React.Component {
                 let startDate = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
-                let endDate = moment
-                  .tz(event.end.dateTime, event.end.timeZone)
-                  .local()
-                let dateFormatted = startDate
-                  .format("MM/DD HH:mm")
-                  .concat(" - ")
-                  .concat(endDate.format("HH:mm"))
+                let dateFormatted = startDate.format("MM/DD, HH:mm")
                 return {
                   id: event.id,
                   summary: event.summary,
-                  startDateUnix: startDate.unix(),
-                  endDateUnix: endDate.unix(),
                   dateFormatted: dateFormatted,
                 }
               })
