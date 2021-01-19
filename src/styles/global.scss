@@ -7,7 +7,7 @@
 $primary-color: #000000;
 $secondary-color: #FFFFFF;
 
-$text-color-primary: $secondary-color;
+$text-color-primary: $primary-color;
 
 * {
     padding: 0;
@@ -61,11 +61,49 @@ ul,li {
     width: 100%
 }
 
-.header {
-    width: 50%;
-}
-
 .layout {
     margin-left: 32px;
     margin-top: 32px;
+    width: 50%;
+}
+
+.player {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: $secondary-color;
+    border-style: outset; 
+    overflow: hidden;
+
+}
+
+.player__btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.6rem;
+    background: $primary-color;
+    border: none;
+    text-align: center;
+}
+
+.player__btn:hover {
+    cursor: pointer;
+}
+
+.player__play svg {
+    width: 1rem;
+    fill: white;
+}
+
+.player__vol svg {
+    width: 1.2rem;
+    fill: white;
+    stroke: white;
+}
+
+.player__vol-box {
+    display: none;
 }

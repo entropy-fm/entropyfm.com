@@ -1,28 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
+import { PlayButton } from "react-soundplayer/components"
+import { withCustomAudio } from "react-soundplayer/addons"
 
-class Player extends React.Component {
-  state = {
-    isPlaying: false,
-  }
-  toggleState = () => {
-    this.setState({ isPlaying: !this.state.isPlaying })
-  }
-  render = () => {
-    return (
-      <div>
-        <img
-          className="button"
-          src={this.state.isPlaying ? "pause.png" : "play.png"}
-          onClick={this.toggleState}
-          // TODO(teddywilson) this should be generic
-          style={{
-            width: 96,
-            height: 96,
-          }}
-        />
-      </div>
-    )
-  }
-}
+const Player = withCustomAudio(props => {
+  const [playerClasses] = useState("")
+
+  return (
+    <div className={"player" + playerClasses}>
+      <PlayButton className="player__play player__btn" {...props} />
+      <h1>HasdfasdfasdI</h1>
+    </div>
+  )
+})
 
 export default Player

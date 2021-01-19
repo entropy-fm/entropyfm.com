@@ -13,7 +13,6 @@ class Footer extends React.Component {
           <h2>Wanna be on air?</h2>
           <h4>Leave us a message at +1 469 708 9203</h4>
         </div> */}
-        <Player />
       </div>
     )
   }
