@@ -1,0 +1,14 @@
+.playerButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    text-align: center;
+}
+
+.playerButton:hover {
+    cursor: pointer;
+}
+
+.playerPlay svg {
+    fill: black;
+}

@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <header className="header">
         <img src="/header-2.png"></img>
-        <p className="divider">player</p>
+        <p className="divider" />
       </header>
     )
   }
