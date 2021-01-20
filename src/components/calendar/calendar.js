@@ -18,14 +18,19 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.events.map(event => (
-          <li key={event.id} className="calendarItem">
-            <span className="calendarItemSpanDate">{event.dateFormatted}</span>{" "}
-            {event.summary}
-          </li>
-        ))}
-      </div>
+      <main className="content">
+        <section className="cityList" id="emailLinks">
+          <article>
+            <ul className="state">
+              {this.state.events.map(event => (
+                <li key={event.id} className="calendarItem">
+                  {event.dateFormatted} {event.summary}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+      </main>
     )
   }
 

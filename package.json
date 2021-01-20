@@ -24,6 +24,7 @@
     "gatsby-plugin-sharp": "^2.12.1",
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-transformer-sharp": "^2.10.1",
+    "icecast-parser": "^4.0.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
     "react": "^16.12.0",

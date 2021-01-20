@@ -1,5 +1,4 @@
 import React from "react"
-import Player from "./player"
 
 class Footer extends React.Component {
   render = () => {

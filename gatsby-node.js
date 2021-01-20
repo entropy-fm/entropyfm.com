@@ -7,6 +7,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             test: /gapi-script/,
             use: loaders.null(),
           },
+          {
+            test: /icecast-parser/,
+            use: loaders.null(),
+          },
         ],
       },
     })
