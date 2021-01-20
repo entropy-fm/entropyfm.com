@@ -6,9 +6,7 @@ class Header extends React.Component {
   render = () => {
     return (
       <header className="header">
-        <Link to="/">
-          <h1 aria-label="Defund Twelve .org">Entropy FM</h1>
-        </Link>
+        <img src="/header-2.png"></img>
         <p className="divider">player</p>
       </header>
     )
