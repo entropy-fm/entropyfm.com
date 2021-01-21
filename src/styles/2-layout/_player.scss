@@ -1,19 +1,18 @@
 .player {
-  left: 0;
-  align-self: stretch;
-}
+  margin-top: $x_2;
+  @include siteWidth;
+  .button {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      text-align: center;
+  }
 
-.playerButton {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: none;
-    text-align: center;
-}
+  .button:hover {
+      cursor: pointer;
+  }
 
-.playerButton:hover {
-    cursor: pointer;
-}
-
-.playerButton svg {
-    fill: black;
+  .button svg {
+      fill: black;
+  }
 }
