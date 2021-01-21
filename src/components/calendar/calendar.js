@@ -32,7 +32,7 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <main className="content">
+      <main className="calendar">
         <section className="list">
           <article>
             {this.state.events.map((event, idx) => {
