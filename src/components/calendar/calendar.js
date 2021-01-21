@@ -38,9 +38,11 @@ class Calendar extends React.Component {
             {this.state.events.map((event, idx) => {
               var weekday = event.date.weekday()
               var item = (
-                <li key={event.id}>
-                  {event.date.format("HH:mm")} {event.summary}
-                </li>
+                <div className="item">
+                  <div>{event.date.format("HH:mm")}</div>
+                  <div> </div>
+                  <div>{event.summary}</div>
+                </div>
               )
               if (
                 idx == 0 ||
