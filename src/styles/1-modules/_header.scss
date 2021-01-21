@@ -1,3 +1,7 @@
 .header {
   margin-top: $x_4;
+  @include siteWidth;
+  img {
+    width: 75%;
+  }
 }
