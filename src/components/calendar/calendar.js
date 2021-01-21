@@ -40,7 +40,6 @@ class Calendar extends React.Component {
               var item = (
                 <div className="item">
                   <div>{event.date.format("HH:mm")}</div>
-                  <div> </div>
                   <div>{event.summary}</div>
                 </div>
               )
