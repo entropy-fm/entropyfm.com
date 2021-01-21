@@ -4,6 +4,16 @@ import { gapi } from "gapi-script"
 import moment from "moment"
 import "moment-timezone"
 
+const WEEKDAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+]
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
@@ -16,18 +26,35 @@ class Calendar extends React.Component {
     this.getEvents()
   }
 
+  weekdayToString(weekday) {
+    return WEEKDAYS[weekday]
+  }
+
   render() {
     return (
       <main className="content">
-        <section className="cityList" id="emailLinks">
+        <section className="list">
           <article>
-            <ul className="state">
-              {this.state.events.map(event => (
-                <li key={event.id} className="calendarItem">
-                  {event.dateFormatted} {event.summary}
+            {this.state.events.map((event, idx) => {
+              var weekday = event.date.weekday()
+              var item = (
+                <li key={event.id}>
+                  {event.date.format("HH:mm")} {event.summary}
                 </li>
-              ))}
-            </ul>
+              )
+              if (
+                idx == 0 ||
+                this.state.events[idx - 1].date.weekday() != weekday
+              ) {
+                var header = (
+                  <li key={weekday} className="header">
+                    {this.weekdayToString(weekday)}
+                  </li>
+                )
+                return [header, item]
+              }
+              return item
+            })}
           </article>
         </section>
       </main>
@@ -48,7 +75,7 @@ class Calendar extends React.Component {
             params: {
               timeMin: moment().toISOString(),
               timeMax: moment().add(3, "M").toISOString(),
-              maxResults: 24,
+              maxResults: 12,
               singleEvents: true,
               orderBy: "startTime",
             },
@@ -71,7 +98,7 @@ class Calendar extends React.Component {
                 return {
                   id: event.id,
                   summary: event.summary,
-                  dateFormatted: dateFormatted,
+                  date: startDate,
                 }
               })
             that.setState(
