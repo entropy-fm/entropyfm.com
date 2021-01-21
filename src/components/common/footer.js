@@ -1,18 +1,25 @@
 import React from "react"
+import { Link } from "gatsby"
+import { MarkdownUtils } from "../../utils/markdown-utils"
 
 class Footer extends React.Component {
   render = () => {
     return (
-      <div className="footer">
-        {/* <div
-          style={{
-            padding: 32,
-          }}
-        >
-          <h2>Wanna be on air?</h2>
-          <h4>Leave us a message at +1 469 708 9203</h4>
-        </div> */}
-      </div>
+      <>
+        <aside className="sticky">
+          <div>
+            <p className="divider" />
+            <span className="city-request-link">
+              <span className="react-inserted">Want to be on air?</span>
+            </span>
+            <span className="snail-mail-link">
+              <span className="emojicon">📬</span>
+              <span className="emojicon">📸</span>
+              <span className="emojicon">🎛️</span>
+            </span>
+          </div>
+        </aside>
+      </>
     )
   }
 }

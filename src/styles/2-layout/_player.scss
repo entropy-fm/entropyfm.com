@@ -1,3 +1,8 @@
+.player {
+  left: 0;
+  align-self: stretch;
+}
+
 .playerButton {
     width: 2.5rem;
     height: 2.5rem;
@@ -9,6 +14,6 @@
     cursor: pointer;
 }
 
-.playerPlay svg {
+.playerButton svg {
     fill: black;
 }

@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
         ></script> */}
       </Helmet>
       <Header />
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   )
