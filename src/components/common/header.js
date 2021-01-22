@@ -1,8 +1,6 @@
 import React from "react"
 
-import { Link } from "gatsby"
-
-import header from "../../../static/header-2.png"
+import header from "../../../static/header.png"
 
 class Header extends React.Component {
   render = () => {
