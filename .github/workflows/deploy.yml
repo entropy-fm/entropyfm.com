@@ -5,19 +5,16 @@ on:
     branches:
       - main
 jobs:
-  create-envfile:
-    runs-on: ubuntu-18.04
-    steps:
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
-        envkey_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
-        file_name: .env.production
   build:
     runs-on: ubuntu-latest
     steps:    
       - uses: actions/checkout@v1
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          envkey_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          file_name: .env.production
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.SECRET_ACCESS_TOKEN }}
