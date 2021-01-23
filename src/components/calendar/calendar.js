@@ -68,7 +68,7 @@ class Calendar extends React.Component {
     function start() {
       gapi.client
         .init({
-          apiKey: `${process.env.GOOGLE_CALENDAR_API_KEY}`,
+          apiKey: `${process.env.GATSBY_GOOGLE_CALENDAR_API_KEY}`,
         })
         .then(() =>
           gapi.client.request({
