@@ -129,12 +129,10 @@ ul, ol {
     color: var(--beta-text)
 }
 
-.emojicon {
+.icon {
     padding: 0 8px 0 0;
     font-size: 20px;
-    &-city::after {
-      content: var(--emojicon-city)
-    }
+    cursor: pointer;
 }
 
 .react-inserted {

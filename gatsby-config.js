@@ -1,4 +1,10 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://entropyfm.com`,
+    mixcloud: `https://www.mixcloud.com/entropyfm/`,
+    instagram: `https://www.instagram.com/entropyfm/`,
+    applyText: `Want to be on air?`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
