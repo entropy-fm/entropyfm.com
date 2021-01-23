@@ -9,9 +9,8 @@ const Footer = () => {
   }
   return (
     <>
-      <aside className="sticky">
+      <div className="sticky">
         <div>
-          <p className="divider" />
           <span className="apply-request-link">
             <span className="react-inserted">{applyText}</span>
           </span>
@@ -35,7 +34,7 @@ const Footer = () => {
             </span>
           </span>
         </div>
-      </aside>
+      </div>
     </>
   )
 }
