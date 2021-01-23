@@ -7,6 +7,7 @@ export const useSiteMetadata = () => {
           siteMetadata {
             title
             siteUrl
+            email
             instagram
             mixcloud
             applyText

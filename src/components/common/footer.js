@@ -3,7 +3,10 @@ import React from "react"
 import { useSiteMetadata } from "./use-site-metadata"
 
 const Footer = () => {
-  const { applyText, instagram, mixcloud } = useSiteMetadata()
+  const { applyText, email, instagram, mixcloud } = useSiteMetadata()
+  const openEmail = () => {
+    window.location.href = `mailto:${email}`
+  }
   const openSocialLink = url => {
     window.open(url, "_blank")
   }
@@ -15,7 +18,14 @@ const Footer = () => {
             <span className="react-inserted">{applyText}</span>
           </span>
           <span>
-            <span className="icon">📬</span>
+            <span
+              className="icon"
+              onClick={() => {
+                openEmail()
+              }}
+            >
+              📬
+            </span>
             <span
               className="icon"
               onClick={() => {

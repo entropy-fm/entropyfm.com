@@ -3,6 +3,7 @@ module.exports = {
     title: `EntropyFM`,
     description: `EntropyFM`,
     siteUrl: `https://entropyfm.com`,
+    email: `entropyfmradio@gmail.com`,
     mixcloud: `https://www.mixcloud.com/entropyfm/`,
     instagram: `https://www.instagram.com/entropyfm/`,
     applyText: `Want to be on air?`,
