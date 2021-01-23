@@ -18,8 +18,14 @@ const Layout = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* CSS Includes */}
         {/* eslint-disable-next-line max-len*/}
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        {/* eslint-disable-next-line max-len*/}
         <link
-          href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Syne&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap"
           rel="stylesheet"
         />
       </Helmet>

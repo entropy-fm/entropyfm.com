@@ -39,13 +39,13 @@ class Calendar extends React.Component {
               var weekday = event.date.weekday()
               var item = (
                 <div className="item">
-                  <div>{event.date.format("HH:mm")}</div>
+                  <div className="date">{event.date.format(`HH:mm`)}</div>
                   <div>{event.summary}</div>
                 </div>
               )
               if (
-                idx == 0 ||
-                this.state.events[idx - 1].date.weekday() != weekday
+                idx === 0 ||
+                this.state.events[idx - 1].date.weekday() !== weekday
               ) {
                 var header = (
                   <li key={weekday} className="header">
@@ -62,7 +62,6 @@ class Calendar extends React.Component {
     )
   }
 
-  // TODO(teddywilson) once finalized should be broken up, moved to another file, etc.
   getEvents = () => {
     let that = this
     function start() {
@@ -75,10 +74,10 @@ class Calendar extends React.Component {
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GATSBY_GOOGLE_CALENDAR_ID}/events`,
             params: {
               timeMin: moment().toISOString(),
-              timeMax: moment().add(3, "M").toISOString(),
+              timeMax: moment().add(3, `M`).toISOString(),
               maxResults: 12,
               singleEvents: true,
-              orderBy: "startTime",
+              orderBy: `startTime`,
             },
           })
         )
@@ -87,7 +86,7 @@ class Calendar extends React.Component {
             let events = response.result.items
               .filter(event => {
                 return (
-                  event.status !== "cancelled" &&
+                  event.status !== `cancelled` &&
                   event.start.dateTime !== undefined
                 )
               })
@@ -95,7 +94,6 @@ class Calendar extends React.Component {
                 let startDate = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
-                let dateFormatted = startDate.format("MM/DD, HH:mm")
                 return {
                   id: event.id,
                   summary: event.summary,
@@ -116,7 +114,7 @@ class Calendar extends React.Component {
           }
         )
     }
-    gapi.load("client", start)
+    gapi.load(`client`, start)
   }
 }
 
