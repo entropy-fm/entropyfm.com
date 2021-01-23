@@ -16,10 +16,7 @@ const Layout = ({ children }) => {
         <meta name="description" content={description} />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* CSS Includes */}
-        {/* eslint-disable-next-line max-len*/}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        {/* eslint-disable-next-line max-len*/}
         <link
           href="https://fonts.googleapis.com/css2?family=Syne&display=swap"
           rel="stylesheet"
