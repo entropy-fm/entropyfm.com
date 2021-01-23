@@ -14,6 +14,9 @@ const WEEKDAYS = [
   "sunday",
 ]
 
+// Right now we cache the calendar events, but this may not be ideal as
+// users are probably reloading the site days apart when the events change.
+// A better strategy may be to display some kind of loading animation/indication.
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
