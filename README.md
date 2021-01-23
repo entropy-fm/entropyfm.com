@@ -2,6 +2,8 @@
 
 Playing around with a redesign
 
+Progress can be viewed at: https://entropyfm.netlify.app/
+
 ## Usage
 1. Install Gatsby `npm install -g gatsby-cli`
 2. Install packages `yarn install`

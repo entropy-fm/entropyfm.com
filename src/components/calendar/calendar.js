@@ -23,6 +23,10 @@ class Calendar extends React.Component {
   }
 
   componentDidMount = () => {
+    const events = localStorage.getItem("events")
+    if (events !== null) {
+      this.setState({ events: JSON.parse(events) })
+    }
     this.getEvents()
   }
 
@@ -36,17 +40,14 @@ class Calendar extends React.Component {
         <section className="list">
           <article>
             {this.state.events.map((event, idx) => {
-              var weekday = event.date.weekday()
+              var weekday = event.weekday
               var item = (
                 <div key={event.id} className="item">
-                  <div className="date">{event.date.format(`HH:mm`)}</div>
+                  <div className="date">{event.time}</div>
                   <div>{event.summary}</div>
                 </div>
               )
-              if (
-                idx === 0 ||
-                this.state.events[idx - 1].date.weekday() !== weekday
-              ) {
+              if (idx === 0 || this.state.events[idx - 1].weekday !== weekday) {
                 var header = (
                   <li key={weekday} className="header">
                     {this.weekdayToString(weekday)}
@@ -91,13 +92,14 @@ class Calendar extends React.Component {
                 )
               })
               .map(event => {
-                let startDate = moment
+                let date = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
                 return {
                   id: event.id,
                   summary: event.summary,
-                  date: startDate,
+                  time: date.format(`HH:mm`),
+                  weekday: date.weekday(),
                 }
               })
             that.setState(
@@ -108,6 +110,7 @@ class Calendar extends React.Component {
                 console.log(that.state.events)
               }
             )
+            localStorage.setItem("events", JSON.stringify(events))
           },
           function (reason) {
             console.log(reason)
