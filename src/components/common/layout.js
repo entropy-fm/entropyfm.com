@@ -2,6 +2,8 @@ import React from "react"
 
 import { Helmet } from "react-helmet"
 
+import Background from "./background"
+import Content from "./content"
 import Footer from "./footer"
 import Header from "./header"
 import { useSiteMetadata } from "./use-site-metadata"
@@ -26,9 +28,16 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <Header />
-      {children}
-      <Footer />
+      <Background />
+      <Content
+        onMeasure={boundingRect => {
+          // TODO(teddywilson) set height of background
+        }}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </Content>
     </>
   )
 }
