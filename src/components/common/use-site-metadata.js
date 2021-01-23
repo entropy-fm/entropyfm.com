@@ -5,6 +5,7 @@ export const useSiteMetadata = () => {
       query SiteMetaData {
         site {
           siteMetadata {
+            title
             siteUrl
             instagram
             mixcloud

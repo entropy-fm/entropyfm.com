@@ -1,5 +1,7 @@
 module.exports = {
   siteMetadata: {
+    title: `EntropyFM`,
+    description: `EntropyFM`,
     siteUrl: `https://entropyfm.com`,
     mixcloud: `https://www.mixcloud.com/entropyfm/`,
     instagram: `https://www.instagram.com/entropyfm/`,
