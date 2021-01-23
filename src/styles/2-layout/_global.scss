@@ -88,8 +88,8 @@ p.divider {
   &:before {
     content: "";
     display: block;
-    width: $x_6;
-    border-bottom: 1px solid var(--link_subtle);
+    width: $x_8;
+    border-bottom: $x_1 solid var(--link_subtle);
     margin: $x_2 0 $x_3;
     max-width: 720px;
   }
