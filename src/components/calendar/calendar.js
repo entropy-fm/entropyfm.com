@@ -72,7 +72,7 @@ class Calendar extends React.Component {
         })
         .then(() =>
           gapi.client.request({
-            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
+            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GATSBY_GOOGLE_CALENDAR_ID}/events`,
             params: {
               timeMin: moment().toISOString(),
               timeMax: moment().add(3, "M").toISOString(),
