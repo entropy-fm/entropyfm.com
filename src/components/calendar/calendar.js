@@ -77,8 +77,7 @@ class Calendar extends React.Component {
           gapi.client.request({
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GATSBY_GOOGLE_CALENDAR_ID}/events`,
             params: {
-              timeMin: moment().toISOString(),
-              timeMax: moment().add(3, `M`).toISOString(),
+              timeMin: moment().startOf("day").toISOString(),
               maxResults: 12,
               singleEvents: true,
               orderBy: `startTime`,
@@ -102,7 +101,7 @@ class Calendar extends React.Component {
                   id: event.id,
                   summary: event.summary,
                   time: date.format(`HH:mm`),
-                  weekday: date.weekday(),
+                  weekday: date.weekday() - 1,
                 }
               })
             that.setState(
