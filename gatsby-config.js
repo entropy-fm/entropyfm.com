@@ -13,7 +13,16 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [
+          require(`postcss-preset-env`)({
+            stage: 0,
+          }),
+        ],
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -28,5 +37,5 @@ module.exports = {
       },
     },
   ],
-  pathPrefix: `/entropy-fm-redesign`,
+  pathPrefix: `/public`,
 }
