@@ -5,15 +5,18 @@ import moment from "moment"
 import "moment-timezone"
 
 const WEEKDAYS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
 ]
 
+// Right now we cache the calendar events, but this may not be ideal as
+// users are probably reloading the site days apart when the events change.
+// A better strategy may be to display some kind of loading animation/indication.
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
@@ -23,6 +26,10 @@ class Calendar extends React.Component {
   }
 
   componentDidMount = () => {
+    const events = localStorage.getItem("events")
+    if (events !== null) {
+      this.setState({ events: JSON.parse(events) })
+    }
     this.getEvents()
   }
 
@@ -36,17 +43,14 @@ class Calendar extends React.Component {
         <section className="list">
           <article>
             {this.state.events.map((event, idx) => {
-              var weekday = event.date.weekday()
+              var weekday = event.weekday
               var item = (
-                <div className="item">
-                  <div>{event.date.format("HH:mm")}</div>
+                <div key={event.id} className="item">
+                  <div className="date">{event.time}</div>
                   <div>{event.summary}</div>
                 </div>
               )
-              if (
-                idx == 0 ||
-                this.state.events[idx - 1].date.weekday() != weekday
-              ) {
+              if (idx === 0 || this.state.events[idx - 1].weekday !== weekday) {
                 var header = (
                   <li key={weekday} className="header">
                     {this.weekdayToString(weekday)}
@@ -62,23 +66,21 @@ class Calendar extends React.Component {
     )
   }
 
-  // TODO(teddywilson) once finalized should be broken up, moved to another file, etc.
   getEvents = () => {
     let that = this
     function start() {
       gapi.client
         .init({
-          apiKey: `${process.env.GOOGLE_CALENDAR_API_KEY}`,
+          apiKey: `${process.env.GATSBY_GOOGLE_CALENDAR_API_KEY}`,
         })
         .then(() =>
           gapi.client.request({
-            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GOOGLE_CALENDAR_ID}/events`,
+            path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GATSBY_GOOGLE_CALENDAR_ID}/events`,
             params: {
-              timeMin: moment().toISOString(),
-              timeMax: moment().add(3, "M").toISOString(),
+              timeMin: moment().startOf("day").toISOString(),
               maxResults: 12,
               singleEvents: true,
-              orderBy: "startTime",
+              orderBy: `startTime`,
             },
           })
         )
@@ -87,19 +89,19 @@ class Calendar extends React.Component {
             let events = response.result.items
               .filter(event => {
                 return (
-                  event.status !== "cancelled" &&
+                  event.status !== `cancelled` &&
                   event.start.dateTime !== undefined
                 )
               })
               .map(event => {
-                let startDate = moment
+                let date = moment
                   .tz(event.start.dateTime, event.start.timeZone)
                   .local()
-                let dateFormatted = startDate.format("MM/DD, HH:mm")
                 return {
                   id: event.id,
                   summary: event.summary,
-                  date: startDate,
+                  time: date.format(`HH:mm`),
+                  weekday: date.weekday() - 1,
                 }
               })
             that.setState(
@@ -110,13 +112,14 @@ class Calendar extends React.Component {
                 console.log(that.state.events)
               }
             )
+            localStorage.setItem("events", JSON.stringify(events))
           },
           function (reason) {
             console.log(reason)
           }
         )
     }
-    gapi.load("client", start)
+    gapi.load(`client`, start)
   }
 }
 

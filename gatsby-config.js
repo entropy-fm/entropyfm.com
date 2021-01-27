@@ -1,8 +1,13 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 module.exports = {
+  siteMetadata: {
+    title: `EntropyFM`,
+    description: `EntropyFM`,
+    siteUrl: `https://entropyfm.com`,
+    email: `entropyfmradio@gmail.com`,
+    mixcloud: `https://www.mixcloud.com/entropyfm/`,
+    instagram: `https://www.instagram.com/entropyfm/`,
+    applyText: `Want to be on air?`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

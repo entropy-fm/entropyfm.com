@@ -4,31 +4,27 @@ import { Helmet } from "react-helmet"
 
 import Footer from "./footer"
 import Header from "./header"
+import { useSiteMetadata } from "./use-site-metadata"
 
 const Layout = ({ children }) => {
+  const { title, description } = useSiteMetadata()
   return (
     <>
       <Helmet>
-        <title>"todo"</title>
+        <title>{title}</title>
         <meta charSet="utf-8" />
-        <meta name="description" content="todo" />
+        <meta name="description" content={description} />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {/* CSS Includes */}
-        {/* eslint-disable-next-line max-len*/}
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap"
           rel="stylesheet"
         />
-
-        {/* JS Includes */}
-        {/* eslint-disable-next-line max-len*/}
-
-        {/* Google Maps - for geocoding letter addresses */}
-        {/* <script
-          src={`https://maps.googleapis.com/maps/api/js?key=${this.props.googleApiKey}&libraries=places`}
-        ></script> */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
       <Header />
       {children}

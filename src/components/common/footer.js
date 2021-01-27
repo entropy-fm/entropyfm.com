@@ -1,27 +1,52 @@
 import React from "react"
-import { Link } from "gatsby"
-import { MarkdownUtils } from "../../utils/markdown-utils"
 
-class Footer extends React.Component {
-  render = () => {
-    return (
-      <>
-        <aside className="sticky">
-          <div>
-            <p className="divider" />
-            <span className="city-request-link">
-              <span className="react-inserted">Want to be on air?</span>
-            </span>
-            <span className="snail-mail-link">
-              <span className="emojicon">📬</span>
-              <span className="emojicon">📸</span>
-              <span className="emojicon">🎛️</span>
-            </span>
-          </div>
-        </aside>
-      </>
-    )
+import { useSiteMetadata } from "./use-site-metadata"
+
+const Footer = () => {
+  const { applyText, email, instagram, mixcloud } = useSiteMetadata()
+  const openEmail = () => {
+    window.location.href = `mailto:${email}`
   }
+  const openSocialLink = url => {
+    window.open(url, "_blank")
+  }
+  return (
+    <>
+      <div className="sticky">
+        <div>
+          <span className="apply-request-link">
+            <span className="react-inserted">{applyText}</span>
+          </span>
+          <span>
+            <span
+              className="icon"
+              onClick={() => {
+                openEmail()
+              }}
+            >
+              📬
+            </span>
+            <span
+              className="icon"
+              onClick={() => {
+                openSocialLink(instagram)
+              }}
+            >
+              📸
+            </span>
+            <span
+              className="icon"
+              onClick={() => {
+                openSocialLink(mixcloud)
+              }}
+            >
+              🎛️
+            </span>
+          </span>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default Footer

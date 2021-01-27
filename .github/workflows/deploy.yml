@@ -12,8 +12,8 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
-          envkey_GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
-          envkey_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          envkey_GOOGLE_CALENDAR_ID: ${{ secrets.GATSBY_GOOGLE_CALENDAR_ID }}
+          envkey_GOOGLE_CALENDAR_API_KEY: ${{ secrets.GATSBY_GOOGLE_CALENDAR_API_KEY }}
           file_name: .env.production
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
