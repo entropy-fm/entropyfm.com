@@ -8,17 +8,21 @@ const Player = withCustomAudio(props => {
   const [streamData, setStreamData] = useState({ streamstatus: 1 })
   const [mixcloudData, setMixcloudData] = useState("")
 
-  const fetchMixcloudStream = () => {
-    fetch("https://api.mixcloud.com/entropyfm/feed/")
+  const fetchMixcloudStream = url => {
+    if (!url) url = "https://api.mixcloud.com/entropyfm/feed/"
+    fetch(url)
       .then(resp => resp.json())
       .then(data => {
-        while (true) {
+        for (let i = 0; i < 10; i++) {
+          // 10 tries to fetch a random mixcloud recording
           let temp = data.data[Math.floor(Math.random() * data.data.length)]
           if (temp.cloudcasts) {
             setMixcloudData(temp.cloudcasts[0].key)
-            break
+            return
           }
         }
+        // No mixcloud recording found, go to next page
+        fetchMixcloudStream(data.paging.next)
       })
   }
 
@@ -28,9 +32,11 @@ const Player = withCustomAudio(props => {
       .then(data => {
         setStreamData(data.streams[0])
 
+        // Check if stream is down, if so fetch mixcloud livestream
         if (!streamData.streamstatus && !mixcloudData) fetchMixcloudStream()
       })
       .catch(() => {
+        // In case we're unable to get the json data
         if (streamData.streamstatus) setStreamData({ streamstatus: 0 })
         if (!mixcloudData) fetchMixcloudStream()
       })
@@ -65,6 +71,7 @@ const Player = withCustomAudio(props => {
           height="120"
           src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=${mixcloudData}`}
           frameborder="0"
+          title="Mixcloud Embed"
         />
       ) : null}
     </div>
