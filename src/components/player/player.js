@@ -22,7 +22,7 @@ const Player = withCustomAudio(props => {
           }
         }
         // No mixcloud recording found, go to next page
-        fetchMixcloudStream(data.paging.next)
+        if (data.paging.next) fetchMixcloudStream(data.paging.next)
       })
   }
 
@@ -44,9 +44,7 @@ const Player = withCustomAudio(props => {
 
   useEffect(() => {
     fetchMetadata()
-    const timer = setInterval(() => {
-      fetchMetadata()
-    }, 10000)
+    const timer = setInterval(() => fetchMetadata(), 10000)
 
     return () => clearInterval(timer)
   })
