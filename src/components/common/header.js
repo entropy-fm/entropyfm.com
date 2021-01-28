@@ -5,10 +5,9 @@ import header from "../../../static/header.png"
 class Header extends React.Component {
   render = () => {
     return (
-      <header className="header">
+      <div className="header">
         <img src={header}></img>
-        <p className="divider" />
-      </header>
+      </div>
     )
   }
 }
