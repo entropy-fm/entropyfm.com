@@ -1,7 +1,7 @@
 // Sass mixins =================================================================
 
 @mixin siteWidth {
-  width: 720px;
+  width: 500px;
 
   @include breakpoint(s) {
     width: calc(100vw - 64px);

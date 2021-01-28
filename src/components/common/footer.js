@@ -2,6 +2,11 @@ import React from "react"
 
 import { useSiteMetadata } from "./use-site-metadata"
 
+import mailIcon from "../../../static/icon_mail.png"
+import instagramIcon from "../../../static/icon_instagram.png"
+import phoneIcon from "../../../static/icon_phone.png"
+import mixcloudIcon from "../../../static/icon_mixcloud.png"
+
 const Footer = () => {
   const { applyText, email, instagram, mixcloud } = useSiteMetadata()
   const openEmail = () => {
@@ -18,30 +23,27 @@ const Footer = () => {
             <span className="react-inserted">{applyText}</span>
           </span>
           <span>
-            <span
+            <img
               className="icon"
+              src={mailIcon}
               onClick={() => {
                 openEmail()
               }}
-            >
-              📬
-            </span>
-            <span
+            />
+            <img
               className="icon"
+              src={instagramIcon}
               onClick={() => {
                 openSocialLink(instagram)
               }}
-            >
-              📸
-            </span>
-            <span
+            />
+            <img
               className="icon"
+              src={mixcloudIcon}
               onClick={() => {
                 openSocialLink(mixcloud)
               }}
-            >
-              🎛️
-            </span>
+            />
           </span>
         </div>
       </div>
