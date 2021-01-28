@@ -42,7 +42,10 @@ const Player = withCustomAudio(props => {
         setStreamData(data.streams[0])
 
         // Check if stream is down, if so fetch mixcloud livestream
-        if (streamData.streamstatus !== STREAM_STATUS_LIVE && !mixcloudData) {
+        if (
+          data.streams[0].streamstatus !== STREAM_STATUS_LIVE &&
+          !mixcloudData
+        ) {
           fetchMixcloudStream()
         }
       })
@@ -77,8 +80,7 @@ const Player = withCustomAudio(props => {
       ) : (
         <p>{offlineText}</p>
       )}
-      {streamData.streamstatus === STREAM_STATUS_OFFLINE &&
-      mixcloudData !== "" ? (
+      {streamData.streamstatus === STREAM_STATUS_OFFLINE && mixcloudData ? (
         <iframe
           id="mixcloud-embed"
           src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=${mixcloudData}`}
