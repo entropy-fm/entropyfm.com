@@ -63,7 +63,7 @@ const Player = withCustomAudio(props => {
     )
 
     return () => clearInterval(timer)
-  })
+  }, [])
 
   return (
     <div className="player">
