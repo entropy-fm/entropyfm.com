@@ -6,7 +6,7 @@
       height: 2.5rem;
       border: none;
       text-align: center;
-      float:left;
+      float: left;
       margin-right: 10px;
   }
 
@@ -16,5 +16,10 @@
 
   .button svg {
       fill: black;
+  }
+
+  #mixcloud-embed {
+      width: 100%;
+      height: 120px;
   }
 }

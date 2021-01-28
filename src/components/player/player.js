@@ -29,7 +29,9 @@ const Player = withCustomAudio(props => {
           }
         }
         // No mixcloud recording found, go to next page
-        if (data.paging.next) fetchMixcloudStream(data.paging.next)
+        if (data.paging.next) {
+          fetchMixcloudStream(data.paging.next)
+        }
       })
   }
 
@@ -78,8 +80,7 @@ const Player = withCustomAudio(props => {
       {streamData.streamstatus === STREAM_STATUS_OFFLINE &&
       mixcloudData !== "" ? (
         <iframe
-          width="100%"
-          height="120"
+          id="mixcloud-embed"
           src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=${mixcloudData}`}
           frameborder="0"
           title="Mixcloud Embed"
