@@ -11,6 +11,10 @@ export const useSiteMetadata = () => {
             instagram
             mixcloud
             applyText
+            offlineText
+            livestreamUrl
+            livestreamMetadata
+            mixcloudApi
           }
         }
       }
