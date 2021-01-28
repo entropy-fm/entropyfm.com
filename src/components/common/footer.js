@@ -2,10 +2,10 @@ import React from "react"
 
 import { useSiteMetadata } from "./use-site-metadata"
 
-import mailIcon from "../../../static/icon_mail.png"
 import instagramIcon from "../../../static/icon_instagram.png"
-import phoneIcon from "../../../static/icon_phone.png"
+import mailIcon from "../../../static/icon_mail.png"
 import mixcloudIcon from "../../../static/icon_mixcloud.png"
+import phoneIcon from "../../../static/icon_phone.png"
 
 const Footer = () => {
   const { applyText, email, instagram, mixcloud } = useSiteMetadata()
@@ -42,6 +42,13 @@ const Footer = () => {
               src={mixcloudIcon}
               onClick={() => {
                 openSocialLink(mixcloud)
+              }}
+            />
+            <img
+              className="icon"
+              src={phoneIcon}
+              onClick={() => {
+                // TODO(teddywilson): implement
               }}
             />
           </span>
