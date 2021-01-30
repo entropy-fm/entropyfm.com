@@ -113,6 +113,7 @@ class Calendar extends React.Component {
               }
             )
             localStorage.setItem("events", JSON.stringify(events))
+            that.props.setIsCalendarLoaded(true)
           },
           function (reason) {
             console.log(reason)
