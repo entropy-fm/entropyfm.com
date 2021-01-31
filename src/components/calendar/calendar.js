@@ -101,7 +101,7 @@ class Calendar extends React.Component {
                   id: event.id,
                   summary: event.summary,
                   time: date.format(`HH:mm`),
-                  weekday: date.weekday() - 1,
+                  weekday: date.weekday() === 0 ? 6 : date.weekday() - 1,
                 }
               })
             that.setState(
