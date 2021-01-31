@@ -142,12 +142,11 @@ ul, ol {
   }
 }
 
-#content {
-  height: 100vh;
+.content {
   opacity: 0;
   transition: opacity 2s;
 }
 
-.content-ready {
+.content.ready {
   opacity: 1 !important;
 }

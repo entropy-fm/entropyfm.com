@@ -15,8 +15,7 @@ export default function Home() {
   return (
     <Layout>
       <div
-        id="content"
-        className={isPlayerLoaded && isCalendarLoaded ? "content-ready" : ""}
+        className={isPlayerLoaded && isCalendarLoaded ? "content ready" : "content"}
       >
         <Player
           streamUrl={livestreamUrl}
