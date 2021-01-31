@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Calendar from "../components/calendar/calendar"
 import Layout from "../components/common/layout"
@@ -7,14 +7,23 @@ import { useSiteMetadata } from "../components/common/use-site-metadata"
 
 export default function Home() {
   const { livestreamUrl } = useSiteMetadata()
-  
+
+  // Load status
+  const [isCalendarLoaded, setIsCalendarLoaded] = useState(false)
+  const [isPlayerLoaded, setIsPlayerLoaded] = useState(false)
+
   return (
     <Layout>
-      <Player
-        streamUrl={livestreamUrl}
-        preloadType="auto"
-      />
-      <Calendar />
+      <div
+        id="content"
+        className={isPlayerLoaded && isCalendarLoaded ? "content-ready" : ""}
+      >
+        <Player
+          streamUrl={livestreamUrl}
+          setIsPlayerLoaded={setIsPlayerLoaded}
+        />
+        <Calendar setIsCalendarLoaded={setIsCalendarLoaded} />
+      </div>
     </Layout>
   )
 }
