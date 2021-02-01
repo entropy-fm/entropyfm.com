@@ -25,7 +25,6 @@ const Player = withCustomAudio(props => {
           // Fetch most recent
           if (data.data[i].cloudcasts) {
             setMixcloudData(data.data[i].cloudcasts[0].key)
-            props.setIsPlayerLoaded(true)
             return
           }
         }
@@ -48,7 +47,7 @@ const Player = withCustomAudio(props => {
           !mixcloudData
         ) {
           fetchMixcloudStream()
-        } else props.setIsPlayerLoaded(true)
+        }
       })
       .catch(() => {
         // In case we're unable to get the json data
