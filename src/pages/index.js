@@ -13,10 +13,8 @@ export default function Home() {
   const [isPlayerLoaded, setIsPlayerLoaded] = useState(false)
 
   return (
-    <Layout>
-      <div
-        className={isPlayerLoaded && isCalendarLoaded ? "content ready" : "content"}
-      >
+    <Layout className={isPlayerLoaded && isCalendarLoaded ? "ready" : ""}>
+      <div className="content">
         <Player
           streamUrl={livestreamUrl}
           setIsPlayerLoaded={setIsPlayerLoaded}

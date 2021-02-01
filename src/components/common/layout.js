@@ -6,10 +6,10 @@ import Footer from "./footer"
 import Header from "./header"
 import { useSiteMetadata } from "./use-site-metadata"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <>
+    <div className={className}>
       <Helmet>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   )
 }
 
