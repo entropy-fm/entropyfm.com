@@ -77,10 +77,10 @@ const Player = withCustomAudio(props => {
   return (
     <div className="player">
       {streamData.streamstatus === STREAM_STATUS_LIVE ? (
-        <div>
+        <>
           <PlayButton className="button" {...props} />
-          <p>{streamData.songtitle}</p>
-        </div>
+          <p className="player-title">{streamData.songtitle}</p>
+        </>
       ) : (
         <p>{offlineText}</p>
       )}
