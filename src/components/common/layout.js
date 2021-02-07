@@ -6,10 +6,10 @@ import Footer from "./footer"
 import Header from "./header"
 import { useSiteMetadata } from "./use-site-metadata"
 
-const Layout = ({ children, className }) => {
+const Layout = ({ children, isReady }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <div className={className}>
+    <>
       <Helmet>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -28,8 +28,8 @@ const Layout = ({ children, className }) => {
       </Helmet>
       <Header />
       {children}
-      <Footer />
-    </div>
+      <Footer isReady={isReady} />
+    </>
   )
 }
 
