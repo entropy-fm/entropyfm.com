@@ -5,13 +5,13 @@ import moment from "moment"
 import "moment-timezone"
 
 const WEEKDAYS = [
+  "sunday",
   "monday",
   "tuesday",
   "wednesday",
   "thursday",
   "friday",
   "saturday",
-  "sunday",
 ]
 
 // Right now we cache the calendar events, but this may not be ideal as
@@ -101,7 +101,7 @@ class Calendar extends React.Component {
                   id: event.id,
                   summary: event.summary,
                   time: date.format(`HH:mm`),
-                  weekday: date.weekday() === 0 ? 6 : date.weekday() - 1,
+                  weekday: date.day(),
                 }
               })
             that.setState(
