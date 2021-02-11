@@ -1,6 +1,6 @@
 import React from "react"
 
-import header from "../../../static/header.png"
+import header from "../../../static/header_glow.png"
 
 class Header extends React.Component {
   render = () => {
