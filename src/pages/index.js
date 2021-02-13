@@ -12,17 +12,12 @@ export default function Home() {
   const [isCalendarLoaded, setIsCalendarLoaded] = useState(false)
   const [isPlayerLoaded, setIsPlayerLoaded] = useState(false)
 
-  let isReady = isPlayerLoaded && isCalendarLoaded;
+  let isReady = isPlayerLoaded && isCalendarLoaded
 
   return (
     <Layout isReady={isReady}>
-      <main className={"content" + (isReady ? " fade ready" : " fade")}>
-        <Player
-          streamUrl={livestreamUrl}
-          setIsPlayerLoaded={setIsPlayerLoaded}
-        />
-        <Calendar setIsCalendarLoaded={setIsCalendarLoaded} />
-      </main>
+      <Player streamUrl={livestreamUrl} setIsPlayerLoaded={setIsPlayerLoaded} />
+      <Calendar setIsCalendarLoaded={setIsCalendarLoaded} />
     </Layout>
   )
 }

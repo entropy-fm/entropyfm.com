@@ -27,7 +27,9 @@ const Layout = ({ children, isReady }) => {
         />
       </Helmet>
       <Header />
-      {children}
+      <main className={"content" + (isReady ? " fade ready" : " fade")}>
+        {children}
+      </main>
       <Footer isReady={isReady} />
     </>
   )
