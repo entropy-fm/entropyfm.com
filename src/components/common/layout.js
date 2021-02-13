@@ -6,7 +6,7 @@ import Footer from "./footer"
 import Header from "./header"
 import { useSiteMetadata } from "./use-site-metadata"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isReady }) => {
   const { title, description } = useSiteMetadata()
   return (
     <>
@@ -27,8 +27,10 @@ const Layout = ({ children }) => {
         />
       </Helmet>
       <Header />
-      {children}
-      <Footer />
+      <main className={"content" + (isReady ? " fade ready" : " fade")}>
+        {children}
+      </main>
+      <Footer isReady={isReady} />
     </>
   )
 }

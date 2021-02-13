@@ -11,6 +11,7 @@ const STREAM_STATUS_OFFLINE = 0,
   STREAM_STATUS_FETCH_ERROR = -1
 
 const Player = withCustomAudio(props => {
+  const { setIsPlayerLoaded } = props;
   const { livestreamMetadata, mixcloudApi, offlineText } = useSiteMetadata()
   const [streamData, setStreamData] = useState({
     streamstatus: STREAM_STATUS_LIVE,
@@ -25,6 +26,7 @@ const Player = withCustomAudio(props => {
           // Fetch most recent
           if (data.data[i].cloudcasts) {
             setMixcloudData(data.data[i].cloudcasts[0].key)
+            setIsPlayerLoaded(true)
             return
           }
         }
@@ -47,6 +49,8 @@ const Player = withCustomAudio(props => {
           !mixcloudData
         ) {
           fetchMixcloudStream()
+        } else {
+          setIsPlayerLoaded(true)
         }
       })
       .catch(() => {
@@ -73,10 +77,10 @@ const Player = withCustomAudio(props => {
   return (
     <div className="player">
       {streamData.streamstatus === STREAM_STATUS_LIVE ? (
-        <div>
+        <>
           <PlayButton className="button" {...props} />
-          <p>{streamData.songtitle}</p>
-        </div>
+          <p className="player-title">{streamData.songtitle}</p>
+        </>
       ) : (
         <p>{offlineText}</p>
       )}
