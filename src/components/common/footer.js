@@ -7,7 +7,7 @@ import mailIcon from "../../../static/icon_mail.png"
 import mixcloudIcon from "../../../static/icon_mixcloud.png"
 import phoneIcon from "../../../static/icon_phone.png"
 
-const Footer = () => {
+const Footer = ({ isReady }) => {
   const { applyText, email, instagram, mixcloud } = useSiteMetadata()
   const openEmail = () => {
     window.location.href = `mailto:${email}`
@@ -17,7 +17,7 @@ const Footer = () => {
   }
   return (
     <>
-      <div className="sticky">
+      <div className={"sticky" + (isReady ? " fade ready" : " fade")}>
         <div>
           <span className="apply-request-link">
             <span className="react-inserted">{applyText}</span>

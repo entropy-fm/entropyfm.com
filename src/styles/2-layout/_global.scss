@@ -141,3 +141,12 @@ ul, ol {
     margin-bottom: 0;
   }
 }
+
+.fade {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.fade.ready {
+  opacity: 1 !important;
+}
