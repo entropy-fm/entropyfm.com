@@ -78,7 +78,7 @@ class Calendar extends React.Component {
             path: `https://www.googleapis.com/calendar/v3/calendars/${process.env.GATSBY_GOOGLE_CALENDAR_ID}/events`,
             params: {
               timeMin: moment().startOf("day").toISOString(),
-              maxResults: 12,
+              timeMax: moment().add(3, 'days').startOf("day").toISOString(),
               singleEvents: true,
               orderBy: `startTime`,
             },
