@@ -38,8 +38,10 @@ class Calendar extends React.Component {
   }
 
   render() {
+    const className = this.props.isActive ? "calendar active": "calendar"
+
     return (
-      <main className="calendar">
+      <main className={className}>
         <section className="list">
           <article>
             {this.state.events.map((event, idx) => {
