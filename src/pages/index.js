@@ -26,10 +26,11 @@ export default function Home() {
     <Layout isReady={isReady}>
       <Tabs currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <Player streamUrl={livestreamUrl} setIsPlayerLoaded={setIsPlayerLoaded} />
-      <Calendar
-        setIsCalendarLoaded={setIsCalendarLoaded}
-        isActive={currentPage === "calendar"}
-      />
+      {currentPage === "calendar" ? (
+        <Calendar
+          setIsCalendarLoaded={setIsCalendarLoaded}
+        />
+      ) : null}
       <Chat
         setIsChatLoaded={setIsChatLoaded}
         isActive={currentPage === "chat"}

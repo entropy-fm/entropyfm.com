@@ -1,5 +1,4 @@
 .calendar {
-    display: none;
     margin-top: $x_2;
     margin-bottom: $x_2;
     min-height: 25vh;
@@ -35,8 +34,4 @@
             margin-top: $x_5;
         }
     }
-}
-
-.calendar.active {
-    display: block;
 }
