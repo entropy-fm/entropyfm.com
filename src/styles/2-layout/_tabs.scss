@@ -1,0 +1,12 @@
+.tabs {
+  font-size: 1.5em;
+  span {
+    cursor: pointer;
+  }
+  span.active {
+    text-decoration: underline;
+  }
+  span:last-of-type {
+    float: right;
+  }
+}
