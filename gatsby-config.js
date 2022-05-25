@@ -9,7 +9,8 @@ module.exports = {
     applyText: `Want to be on air?`,
     offlineText: `We're currently offline, check out a previous show below!`,
     livestreamUrl: `https://s28.myradiostream.com/26952/listen.mp3`,
-    livestreamMetadata: `https://s28.myradiostream.com/26952/statistics?sid=1&json=1`,
+    // URL below is extracted from: http://myradiostream.com/embed/json.php?s=leavemiksalone&nocache=1631632923
+    livestreamMetadata: `https://myradiostream.com/embed/statistics.php?s=28&p=26952&name=Entropy+FM&type=scv1`,
     mixcloudApi: `https://api.mixcloud.com/entropyfm/cloudcasts/`,
   },
   plugins: [

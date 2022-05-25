@@ -6,9 +6,9 @@ import fetchJsonp from "fetch-jsonp"
 import { useSiteMetadata } from "../common/use-site-metadata"
 
 const METADATA_POLLING_INTERVAL_MS = 10000
-const STREAM_STATUS_OFFLINE = 0,
-  STREAM_STATUS_LIVE = 1,
-  STREAM_STATUS_FETCH_ERROR = -1
+const STREAM_STATUS_OFFLINE = "0",
+  STREAM_STATUS_LIVE = "1",
+  STREAM_STATUS_FETCH_ERROR = "-1"
 
 const Player = withCustomAudio(props => {
   const { setIsPlayerLoaded } = props
@@ -33,7 +33,6 @@ const Player = withCustomAudio(props => {
       .then(resp => resp.json())
       .then(data => {
         setStreamData(data.streams[0])
-        console.log(data)
 
         // Check if stream is down, if so fetch mixcloud livestream
         if (
